@@ -1,0 +1,45 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 112.5%;
+  font-family: sans-serif;
+  --color: orangered;
+  --text: white;
+  --grey: hsl(0, 0%, 75%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Button styles */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--color);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(120%);
+}
+button:focus {
+  outline: 1px dashed var(--color);
+  outline-offset: 1px;
+}
+button:disabled {
+  color: black;
+  background: var(--grey);
+  cursor: not-allowed;
+}
+button:active {
+  filter: brightness(95%);
+}
