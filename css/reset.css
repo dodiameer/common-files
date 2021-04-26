@@ -13,12 +13,12 @@
 	--grey: hsl(0, 0%, 75%);
 	--link-color: var(--color);
 }
-@media only screen and (min-width: 360px) {
+@media only screen and (min-width: 361px) {
 	:root {
 		font-size: 112.5%;
 	}
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
 	:root {
 		font-size: 116%;
 	}
@@ -76,4 +76,10 @@ a {
 
 .center {
 	text-align: center;
+}
+
+p.text {
+	max-width: 100ch;
+	margin-left: auto;
+	margin-right: auto;
 }
