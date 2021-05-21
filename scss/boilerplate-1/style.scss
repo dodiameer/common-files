@@ -1,0 +1,60 @@
+@use "lib/partials/include-media" as *;
+@mixin google-font($family) {
+  @import url("https://fonts.googleapis.com/css?family=#{$family}");
+}
+
+@include google-font("Open Sans");
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 100%;
+  font-family: "Open Sans", sans-serif;
+  @include media(">tablet") {
+    font-size: 112.5%;
+  }
+  @include media(">=desktop") {
+    font-size: 116%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  line-height: 1.5;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+}
+
+.container {
+  padding: 0 1rem;
+}
+.text-container {
+  padding: 0 3rem 0 1.5rem;
+}
+@media only screen and (max-width: 768px) {
+  .text-container {
+    padding: 0 1.5rem 0 0.75rem;
+  }
+}
+
+.text {
+  max-width: 100ch;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
