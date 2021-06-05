@@ -1,0 +1,26 @@
+$colors: (
+  "primary": (
+    "lightest": hsl(269, 100%, 19%),
+    "lighter": hsl(269, 100%, 31%),
+    "normal": hsl(269, 100%, 49%),
+    "darker": hsl(269, 100%, 61%),
+    "darkest": hsl(269, 100%, 79%),
+    "content": white,
+  ),
+  "misc": (
+    "body": "#f5f5f5",
+    "text": "#333"
+  ),
+);
+
+$breakpoints: (
+  mobile: 320px,
+  tablet: 768px,
+  desktop: 1280px,
+);
+
+@function get-color($color, $shade: "normal") {
+  $color-map: map-get($colors, $color);
+  $shade-value: map-get($color-map, $shade);
+  @return $shade-value;
+}

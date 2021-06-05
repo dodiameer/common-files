@@ -1,0 +1,64 @@
+/*
+This can be used as an alternative to Boostrap's column and row system.
+
+This demo uses include-media for media queries, and uses a mixin to generate the classes, but you can do it in vanilla CSS (or run sass and take its output)
+
+It also includes a class that hides the column
+
+I didn't stick to Bootstrap's breakpoints and gutter value, feel free to use them if you want to :) 
+*/
+
+@use "include-media" as *;
+
+$gutter: 1rem !default;
+
+@mixin _grid-classes($prefix: "xs") {
+  // Generate a 0 class to hide element
+  .col-#{$prefix}-0 {
+    display: none;
+  }
+  @for $span from 1 through 12 {
+    .col-#{$prefix}-#{$span} {
+      // Set display: initial; to restore visibility to element
+      display: initial;
+      grid-column: span $span;
+    }
+  }
+}
+
+.row {
+  display: grid;
+  // Sets up 2 grid on mobile, twelve from 768px and up
+  grid-template-columns: 1fr 1fr;
+  @include media(">=tablet") {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  // Can be removed if you want
+  gap: $gutter;
+  padding: $gutter;
+}
+
+// .col-xs-X
+@include _grid-classes("sm");
+
+@include media(">=tablet") {
+  // .col-sm-X - 768px and up
+  @include _grid-classes("md");
+}
+
+@include media(">=desktop") {
+  // .col-lg-X - 1024px and up
+  @include _grid-classes("lg");
+}
+
+.container {
+  width: 100%;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  @include media(">=tablet") {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: min(80vw, 1024px);
+  }
+}
