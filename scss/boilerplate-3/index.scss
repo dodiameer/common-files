@@ -184,6 +184,7 @@ p {
   background: hsl(0 0% 94%);
   cursor: pointer;
   padding: 0.75em 1.5em;
+  text-align: center;
 
   &--brand {
     @extend .button;
@@ -209,7 +210,7 @@ p {
 }
 
 /*================================
-  Navbar (Not responsive)
+  Navbar
 
   example:
 
@@ -254,15 +255,28 @@ p {
     grid-template-columns: 3fr 1fr;
     align-items: center;
     gap: 1rem;
+    @include media("<md") {
+      grid-template-areas: 
+        "left"
+        "right";
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
   }
 
   &__left {
     grid-area: left;
+    @include media("<md") {
+      margin: 0 auto;
+    }
   }
 
   &__right {
     grid-area: right;
     justify-content: flex-end;
+    @include media("<md") {
+      justify-content: center;
+    }
   }
 
   &__brand {
@@ -322,7 +336,7 @@ p {
 ================================*/
 .hero {
   height: 50vh;
-  background: props.get(color brand 600 shade);
+  background: /*url(https://picsum.photos/1200),*/ props.get(color brand 600 shade);
   color: props.get(color brand 600 text);
 
   &__content {
@@ -373,7 +387,3 @@ p {
     }
   }
 }
-
-/*================================
-  App styles 
-================================*/
