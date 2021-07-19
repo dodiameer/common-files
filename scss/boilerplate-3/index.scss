@@ -134,7 +134,7 @@ p {
 }
 
 /*================================
-  Flow classes that depends on custom properties for it's value
+  Flow classes that depends on custom properties for its value
 
   To change the flow for a specific class, do this:
   
@@ -239,10 +239,12 @@ p {
   padding-bottom: 1rem;
   box-shadow: 0 0 3px rgba(black, 0.5);
 
-  /* Sticky */
-  position: sticky;
-  top: 0;
-  left: 0;
+  @include media(">=md") {
+    /* Sticky */
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
   //? Needed because the default background is transparent
   //* This could be the body background, but white looks better imo
   // background: props.get(color body shade); //* Example
@@ -387,3 +389,7 @@ p {
     }
   }
 }
+
+/*================================
+  App styles 
+================================*/
