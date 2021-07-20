@@ -216,19 +216,24 @@ p {
 
   <nav class="nav">
     <div class="nav__content">
-      <a href="#" class="nav__left nav__brand">ACME Inc.</a>
-      <ul class="nav__right nav__items">
+      <div class="nav__left">
+        <a href="#" class="nav__brand">ACME Inc.</a>
+        <button class="nav__burger" data-nav-toggle="true">
+          <i class="fas fa-bars"></i> <!--Replace with any icon of your choice -->
+        </button>
+      </div>
+      <ul class="nav__right nav__items" data-nav-links="true">
         <li class="nav__item">
-          <a href="#" class="nav__link">Home</a>
+          <a href="#" class="nav__link">Link 1</a>
         </li>
         <li class="nav__item">
-          <a href="#" class="nav__link">Services</a>
+          <a href="#" class="nav__link">Link 2</a>
         </li>
         <li class="nav__item">
-          <a href="#" class="nav__link">About</a>
+          <a href="#" class="nav__link">Link 3</a>
         </li>
         <li class="nav__item">
-          <a href="#" class="nav__link">Contact us</a>
+          <a href="#" class="nav__link">Link 4</a>
         </li>
       </ul>
     </div>
@@ -258,29 +263,37 @@ p {
     align-items: center;
     gap: 1rem;
     @include media("<md") {
-      grid-template-areas: 
-        "left"
-        "right";
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
   }
 
   &__left {
     grid-area: left;
     @include media("<md") {
-      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
   }
 
-  &__right {
-    grid-area: right;
-    justify-content: flex-end;
-    @include media("<md") {
-      justify-content: center;
+  &__burger {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    
+    @include media(">=md") {
+      display: none;
     }
   }
-
+  
   &__brand {
     font-size: 1.33rem;
     font-weight: 900;
@@ -291,12 +304,12 @@ p {
     border: 4px solid currentColor;
     padding: 0.33em 0.75em;
     transition: color 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
+    
     &:hover {
       color: props.get(color accent 500 shade);
     }
   }
-
+  
   &__items {
     margin: 0;
     padding: 0;
@@ -306,6 +319,29 @@ p {
     @extend .flow-x;
     list-style: none;
     font-size: 0.85rem;
+    
+    @include media("<md") {
+      display: none; 
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      background: inherit;
+      animation: slide-out 1s normal ease;
+
+      & > :not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+      
+      &.is-visible {
+        display: flex;
+      }
+    }
+  }
+  
+  &__right {
+    grid-area: right;
+    justify-content: flex-end;
   }
 
   &__link {
@@ -317,6 +353,15 @@ p {
     &--active {
       color: props.get(color accent 500 shade);
     }
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
