@@ -68,6 +68,7 @@ export const session: Handle<SessionLocals & ParseCookiesLocals> = async ({
       maxAge: 60 * 60 * 24 * 7,
       path: "/",
       secure: import.meta.env.PROD,
+      httpOnly: true,
     });
     if (typeof currentSetCookie === "string") {
       response.headers["set-cookie"] = [sessionCookie, currentSetCookie];
