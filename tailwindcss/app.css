@@ -3,8 +3,45 @@
 @tailwind utilities;
 
 @layer utilities {
-  .line {
-    @apply flex flex-row items-center
-  }
+	.line {
+		@apply flex flex-row items-center;
+	}
+
+	.title {
+		@apply font-bold text-3xl;
+	}
+
+	.subtitle {
+		@apply font-semibold text-xl;
+	}
 }
 
+@layer components {
+	.btn {
+		@apply px-4 py-2 rounded text-center font-semibold no-underline inline-block;
+	}
+
+	.btn-primary {
+		@apply bg-primary-600 hover:bg-primary-700 focus:ring text-white;
+	}
+
+	.btn-secondary {
+		@apply bg-secondary-600 hover:bg-secondary-700 focus:ring text-white;
+	}
+
+	.btn-success {
+		@apply bg-success-600 hover:bg-success-700 focus:ring text-white;
+	}
+
+	.btn-danger {
+		@apply bg-danger-600 hover:bg-danger-700 focus:ring text-white;
+	}
+
+	.btn-warning {
+		@apply bg-warning-600 hover:bg-warning-700 focus:ring text-white;
+	}
+
+	.btn-info {
+		@apply bg-info-600 hover:bg-info-700 focus:ring text-white;
+	}
+}
